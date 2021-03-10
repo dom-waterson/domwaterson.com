@@ -1,6 +1,6 @@
 ---
 title: My first post!
-date: 2021-02-14T19:05:27.220Z
+date: "2021-02-14T19:05:27.220Z"
 ---
 
 - **[pica](https://nodeca.github.io/pica/demo/)** - high quality and fast image

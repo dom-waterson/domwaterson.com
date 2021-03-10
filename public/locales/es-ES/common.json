@@ -1,3 +1,5 @@
 {
-  "greeting": "Hola, bienvenido a mi sitio"
+  "greeting": "Hola, bienvenido a mi sitio",
+  "blog": "Blog",
+  "blog-link": "Ir al blog"
 }

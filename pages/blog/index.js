@@ -1,13 +1,16 @@
 import Head from "next/head";
+import { useTranslation } from "next-i18next";
 
-import { getAllPosts } from "@/lib/data";
+import { getSortedPostsData } from "@/lib/posts";
 import BlogListItem from "@/components/BlogListItem";
 
 export default function Blog({ posts }) {
+  const { t } = useTranslation("common");
+
   return (
     <div>
       <Head>
-        <title>Dom Waterson - Blog</title>
+        <title>{`Dom Waterson - ${t("blog")}`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -20,17 +23,12 @@ export default function Blog({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const allPosts = getAllPosts();
+export const getStaticProps = async ({ locale }) => {
+  const posts = getSortedPostsData(locale);
 
   return {
     props: {
-      posts: allPosts.map(({ data, content, slug }) => ({
-        ...data,
-        date: data.date.toISOString(),
-        content,
-        slug,
-      })),
+      posts,
     },
   };
-}
+};
