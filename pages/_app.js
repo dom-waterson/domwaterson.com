@@ -1,11 +1,28 @@
+import { appWithTranslation } from "next-i18next";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 import "tailwindcss/tailwind.css";
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <div className="mx-auto my-8 w-9/12">
-      <Component {...pageProps} />
-    </div>
-  );
-}
+const MyApp = ({ Component, pageProps }) => {
+  const router = useRouter();
 
-export default MyApp;
+  return (
+    <>
+      <Component {...pageProps} />{" "}
+      <footer>
+        <ul>
+          {router.locales.map((locale) => (
+            <li key={locale}>
+              <Link href={router.asPath} locale={locale}>
+                <a>{locale}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </footer>
+    </>
+  );
+};
+
+export default appWithTranslation(MyApp);
